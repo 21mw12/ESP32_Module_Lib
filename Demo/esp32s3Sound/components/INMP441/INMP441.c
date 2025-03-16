@@ -1,8 +1,6 @@
 #include "INMP441.h"
 #include "esp_err.h"
 #include <driver/i2s.h>
-#include "esp_afe_sr_iface.h"
-#include "esp_afe_sr_models.h"
 
 int16_t INMP441_sBuffer[INMP441_BufferLen];
 
@@ -38,7 +36,7 @@ void INMP441_Init(){
 
 int INMP441_Read(void) {
     size_t bytes_read = 0;
-    esp_err_t result = i2s_read(INMP441_PORT, sBuffer, INMP441_BufferLen * sizeof(int16_t), &bytes_read, portMAX_DELAY);
+    esp_err_t result = i2s_read(INMP441_PORT, INMP441_sBuffer, INMP441_BufferLen * sizeof(int16_t), &bytes_read, portMAX_DELAY);
 
     if (result != ESP_OK) {
         // 处理错误

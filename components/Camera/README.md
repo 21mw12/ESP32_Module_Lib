@@ -2,8 +2,17 @@
 
 - 拉取esp32-camera
 
+  使用命令行
+
   ```shell
   idf.py add-dependency espressif/esp32-camera
+  ```
+
+  使用配置文件（在 `main/idf_component.yml` 文件中添加）
+
+  ```txt
+  dependencies:
+    espressif/esp-sr: "*"
   ```
 
 - 需要配合WIFI的HTTP，并传入对应的处理函数（图片或视频流）
